@@ -16,8 +16,8 @@ public class ShotScript : MonoBehaviour {
 		rb.velocity = transform.up * speed;
 	}
 	
-	void OnCollisionEnter(Collider other)
+	/* void OnCollisionEnter(Collider other)
 	{
-
-	}
+		//this is for destroying the object the shot hits
+	} */
 }
