@@ -5,15 +5,12 @@ public class ShotScript : MonoBehaviour {
 
 	public float speed;
 	public float timer; //in seconds
-
-	public Collider collider;
+	
 	public Rigidbody rb;
 	
 	void Start () 
 	{
 		rb = GetComponent<Rigidbody> ();
-		collider = GetComponent<Collider> ();
-
 		rb.velocity = transform.up * speed;
 	}
 
@@ -26,8 +23,15 @@ public class ShotScript : MonoBehaviour {
 			Destroy(gameObject);
 		}
 	}
-	/* void OnCollisionEnter(Collider other)
+	void OnCollisionEnter(Collision other)
 	{
-		//this is for destroying the object the shot hits
-	} */
+		if (other.gameObject.tag == "Boundary")
+		{
+			Destroy(gameObject);
+			return;
+		}
+
+		Destroy (other.gameObject);
+		Destroy (gameObject);
+	}
 }
